@@ -7,7 +7,7 @@ use dotenvy::{dotenv, var};
 use ethers::abi::AbiEncode;
 use ethers::prelude::*;
 use ethers::types::transaction::eip2718::TypedTransaction;
-use eyre::{eyre, Result};
+use eyre::Result;
 use futures_util::stream::FuturesUnordered;
 use futures_util::StreamExt;
 use jsonrpsee::http_client::{transport::Error as HttpError, HttpClientBuilder};
@@ -67,7 +67,7 @@ async fn main() -> Result<()> {
 
     while let Some(event) = mev_share_stream.next().await {
         let event = event?;
-        //info!("{:?}", event);
+        info!("{:?}", event);
 
         //get contract address jank
         let contract_address = get_contract_address(&event);
